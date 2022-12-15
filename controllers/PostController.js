@@ -53,8 +53,14 @@ module.exports.GetAllPost = async (req, res)=>{
         //         }
         //     }
             
-        // ])
-        const posts = await Post.find({'title': {$regex: /food/, $options: "i"}}).limit(1)
+        // ]) // aggregate framework
+
+
+        const skip = (Number(req.body.per_page) * Number(req.body.current_page)) - Number(req.body.per_page) 
+        const posts = await Post.find({}).skip(skip).limit(Number(req.body.per_page)) //pagination
+
+        // const posts = await Post.find({'title': {$regex: /food/, $options: "i"}}).limit(1) //search 
+
         res.status(201).json(posts)
     } catch (error) {
         return res.status(500).json({message: "error occured"})
