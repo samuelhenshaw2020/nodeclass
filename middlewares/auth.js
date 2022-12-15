@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 const { join } = require("path");
 const { root_path } = require("../global.config");
 const User = require("../models/User");
-const { create } = require("../models/User");
 const { JWT_ALGORITHM, HttpStatusCodes } = require("../utils/constants");
 
 async function auth(req, res, next) {

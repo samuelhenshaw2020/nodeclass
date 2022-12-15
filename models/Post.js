@@ -27,6 +27,14 @@ const postSchema = Schema(
             type: Schema.Types.ObjectId,
             ref: "users",
             required: true
+        },
+        genre: {
+            type: [Schema.Types.String],
+            default: null
+        },
+        likes: {
+            type: Schema.Types.Number,
+            default:0
         }
 
     }, 
